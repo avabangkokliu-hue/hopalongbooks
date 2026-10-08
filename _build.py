@@ -336,11 +336,11 @@ def fcard(f):
 signup = "" if not GATE else f"""<section class="signup" id="signup"><div><h2>Get all 3 pages free</h2><p>Enter your email and the download buttons unlock right away. Now and then we'll send new free pages and news about new books.</p></div>
 <div><form id="gate" action="{GATE['action']}" method="post"><input type="hidden" name="{GATE['page']}" id="gpage" value="all"><input type="email" name="{GATE['field']}" required placeholder="Your email" aria-label="Your email"><button class="btn" type="submit">Unlock pages</button>
 <small>No spam. Unsubscribe any time with one click.</small></form><p class="ok">Thank you! Your pages are unlocked below.</p></div></section>
-<script>(function(){{var K="hab_free_ok",sec=document.getElementById("signup"),f=document.getElementById("gate");
+<script>document.addEventListener("DOMContentLoaded",function(){{var K="hab_free_ok",sec=document.getElementById("signup"),f=document.getElementById("gate");
 function open(){{sec.classList.add("done");document.querySelectorAll("a.gated").forEach(function(a){{a.href=a.dataset.pdf;a.setAttribute("download","");a.textContent="Download free PDF";a.classList.remove("gated")}})}}
 try{{if(localStorage.getItem(K))open()}}catch(e){{}}
 document.querySelectorAll("a.gated").forEach(function(a){{a.addEventListener("click",function(){{document.getElementById("gpage").value=a.dataset.pdf.split("free-page-")[1].replace(".pdf","")}})}});
-f.addEventListener("submit",function(e){{e.preventDefault();fetch(f.action,{{method:"POST",mode:"no-cors",body:new FormData(f)}}).finally(function(){{try{{localStorage.setItem(K,"1")}}catch(e){{}}open()}})}});}})();</script>"""
+f.addEventListener("submit",function(e){{e.preventDefault();fetch(f.action,{{method:"POST",mode:"no-cors",body:new FormData(f)}}).finally(function(){{try{{localStorage.setItem(K,"1")}}catch(e){{}}open()}})}});}});</script>"""
 steps = ("<li>Enter your email</li><li>Download and print</li><li>Color, then check the answer</li>" if GATE else
          "<li>Download and print</li><li>Grab the crayons</li><li>Color, then check the answer</li>")
 page("Free Color by Number Pages to Print | Hop Along Books", "Print free color by number pages for ages 3-5, each with its answer picture. Real pages from Hop Along books.",

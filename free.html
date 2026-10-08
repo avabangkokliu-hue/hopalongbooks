@@ -84,11 +84,11 @@ footer{margin-top:70px;padding:30px 0;color:var(--mut);font-size:15px;border-top
 <ol class="steps"><li>Enter your email</li><li>Download and print</li><li>Color, then check the answer</li></ol></div><section class="signup" id="signup"><div><h2>Get all 3 pages free</h2><p>Enter your email and the download buttons unlock right away. Now and then we'll send new free pages and news about new books.</p></div>
 <div><form id="gate" action="https://docs.google.com/forms/d/e/1FAIpQLSdFdQJOMdebMGkeHOC5z1wK7ttsjFmdx__mjwwPk-WPauX6xw/formResponse" method="post"><input type="hidden" name="entry.156612593" id="gpage" value="all"><input type="email" name="entry.19342081" required placeholder="Your email" aria-label="Your email"><button class="btn" type="submit">Unlock pages</button>
 <small>No spam. Unsubscribe any time with one click.</small></form><p class="ok">Thank you! Your pages are unlocked below.</p></div></section>
-<script>(function(){var K="hab_free_ok",sec=document.getElementById("signup"),f=document.getElementById("gate");
+<script>document.addEventListener("DOMContentLoaded",function(){var K="hab_free_ok",sec=document.getElementById("signup"),f=document.getElementById("gate");
 function open(){sec.classList.add("done");document.querySelectorAll("a.gated").forEach(function(a){a.href=a.dataset.pdf;a.setAttribute("download","");a.textContent="Download free PDF";a.classList.remove("gated")})}
 try{if(localStorage.getItem(K))open()}catch(e){}
 document.querySelectorAll("a.gated").forEach(function(a){a.addEventListener("click",function(){document.getElementById("gpage").value=a.dataset.pdf.split("free-page-")[1].replace(".pdf","")})});
-f.addEventListener("submit",function(e){e.preventDefault();fetch(f.action,{method:"POST",mode:"no-cors",body:new FormData(f)}).finally(function(){try{localStorage.setItem(K,"1")}catch(e){}open()})});})();</script>
+f.addEventListener("submit",function(e){e.preventDefault();fetch(f.action,{method:"POST",mode:"no-cors",body:new FormData(f)}).finally(function(){try{localStorage.setItem(K,"1")}catch(e){}open()})});});</script>
 <h2>Pick a page</h2><div class="freebie"><article class="fcard" style="--c:#6A4BB0"><div class="top"><span class="pill">Level 1, 3 colors</span>
 <img class="art" src="https://avabangkokliu-hue.github.io/hopalongbooks/img/free_trex-apple.jpg" alt="T-Rex Eats an Apple color by number picture" loading="lazy"></div>
 <h3>T-Rex Eats an Apple</h3><p class="from">From <a href="https://avabangkokliu-hue.github.io/hopalongbooks/books/dinosaurs.html">Dinosaurs</a></p>
