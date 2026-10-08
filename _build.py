@@ -238,7 +238,7 @@ page("About Hop Along Books", "Hop Along Books makes color by number books for a
 <li><b>Answer pictures at the back</b>, and a small color example on every page.</li>
 </ul>
 <p>The books are published through Amazon KDP and printed on demand. Line art and text are produced with AI tools and checked by hand, page by page.</p>
-<p>Questions? Write to <a href="mailto:hello@hopalongbooks.com">hello@hopalongbooks.com</a>.</p>
+<p>Questions? Write to <a href="mailto:purevibe88@gmail.com">purevibe88@gmail.com</a>.</p>
 <h2>The books</h2><div class="shelf">{''.join(book_card(b) for b in BOOKS)}</div>
 """, "about.html")
 
