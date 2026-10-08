@@ -5,7 +5,7 @@ PUB = "Hop Along Books"
 TODAY = "2026-10-08"
 
 BOOKS = [
- dict(slug="trucks-trains-rockets", key="book1", color="#1F75FE",
+ dict(slug="trucks-trains-rockets", key="book1", topic="things-that-go", age="3-5", color="#1F75FE",
       title="Trucks, Trains, Rockets & Things That Go",
       short="Things That Go",
       sub="Color by Number for Kids Ages 3-5",
@@ -14,7 +14,7 @@ BOOKS = [
       blurb="45 big, friendly vehicles: cars, fire trucks, diggers, school buses, trains, boats, planes and rockets, plus busy scenes like the airport and the construction site.",
       inside="cars, trucks, diggers, trains, rockets, boats, planes, buses, space and construction scenes",
       levels=["Car", "Steam Train", "Construction Site"], sample="Fire Truck", fact="a read-aloud vehicle fact"),
- dict(slug="cute-animals", key="book2", color="#1CAC78",
+ dict(slug="cute-animals", key="book2", topic="animals", age="3-5", color="#1CAC78",
       title="Cute Animals Color by Number for Kids Ages 3-5",
       short="Cute Animals",
       sub="Pets, Farm, Zoo & Dinosaurs",
@@ -23,7 +23,7 @@ BOOKS = [
       blurb="45 big, friendly animals: cats, dogs, ducks, lions, elephants, penguins, dolphins, dinosaurs and busy scenes like the farm, the jungle and under the sea.",
       inside="pets, farm animals, zoo animals, sea creatures, dinosaurs and big scenes",
       levels=["Cat", "Lion", "Farm"], sample="Elephant", fact="a read-aloud animal fact"),
- dict(slug="dinosaurs", key="book3", color="#6A4BB0",
+ dict(slug="dinosaurs", key="book3", topic="dinosaurs", age="3-5", color="#6A4BB0",
       title="Dinosaurs Color by Number for Kids Ages 3-5",
       short="Dinosaurs",
       sub="A Day in the Life of Silly Dinos",
@@ -33,6 +33,18 @@ BOOKS = [
       inside="8 recurring dinosaur characters in everyday life, jobs, vehicles and big scenes",
       levels=["T-Rex Eats an Apple", "Brachiosaurus Pulls a Carrot", "A Dinosaur Birthday Party"], sample="T-Rex Brushes His Teeth", fact="a read-aloud dinosaur fact"),
 ]
+
+TOPICS = [
+ dict(slug="things-that-go", name="Things That Go", blurb="Trucks, trains, diggers, boats and rockets.", color="#7FD3F0", img="hero_truck.jpg"),
+ dict(slug="animals", name="Animals", blurb="Pets, farm friends, zoo animals and sea creatures.", color="#5BC98A", img="hero_cat.jpg"),
+ dict(slug="dinosaurs", name="Dinosaurs", blurb="Silly dinos brushing teeth, baking cakes and driving trucks.", color="#C7B6F2", img="hero_trex.jpg"),
+]
+SOON = ["Ocean", "Space", "Holidays", "Bugs & Garden"]
+AGES = [dict(slug="3-5", name="Ages 3-5", blurb="Big shapes, 3 to 8 colors, color names on every key.", live=True),
+        dict(slug="5-7", name="Ages 5-7", blurb="Smaller spaces and more colors.", live=False)]
+FREE = [dict(slug="trex-apple", name="T-Rex Eats an Apple", book="dinosaurs", level="Level 1, 3 colors"),
+        dict(slug="cat", name="Cat", book="cute-animals", level="Level 1, 3 colors"),
+        dict(slug="fire-truck", name="Fire Truck", book="trucks-trains-rockets", level="Level 2, 4 colors")]
 
 CSS = """
 @import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Nunito:wght@400;600;700;800&display=swap');
@@ -71,10 +83,27 @@ h1{font-size:clamp(34px,5.2vw,56px)}h2{font-size:clamp(26px,3.4vw,36px);margin:6
 .guides{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px}
 .guide{background:#fff;border-radius:18px;padding:22px;text-decoration:none;color:var(--ink);border:2px solid transparent}
 .guide:hover{border-color:var(--butter)}.guide p{color:var(--mut);font-size:15px;margin:6px 0 0}
+.hero img.hero-art{width:100%;display:block;background:none;padding:0;transform:none;border-radius:0}
+.topics{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:20px}
+.topic{display:block;border-radius:24px;padding:18px 18px 22px;text-decoration:none;color:var(--ink);transition:transform .15s}
+.topic:hover{transform:translateY(-3px)}
+.topic img{width:100%;aspect-ratio:1/1;object-fit:contain;background:#fff;border-radius:16px;padding:10px}
+.topic h3{margin:14px 0 2px}.topic p{margin:0;font-size:15px;color:#3a3958}.topic .count{font-weight:800;font-size:14px;margin-top:8px;display:block}
+.soon{display:flex;flex-wrap:wrap;gap:10px;margin-top:16px}.soon span{border:2px dashed var(--line);border-radius:999px;padding:6px 14px;color:var(--mut);font-weight:700;font-size:15px}
+.ages{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px}
+.age{display:block;background:#fff;border-radius:20px;padding:20px 22px;text-decoration:none;color:var(--ink);border:3px solid var(--butter)}
+.age.off{border-style:dashed;border-color:var(--line);color:var(--mut)}
+.age b{font-family:Fredoka,sans-serif;font-size:26px;font-weight:600;display:block}
+.freebie{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:22px}
+.freebie a.card{display:block;background:#fff;border-radius:20px;padding:16px;text-decoration:none;color:var(--ink)}
+.freebie img{width:100%;aspect-ratio:1/1;object-fit:contain}
+.band{background:var(--butter);border-radius:28px;padding:30px;margin-top:64px;display:grid;grid-template-columns:1.3fr 1fr;gap:24px;align-items:center}
+.band h2{margin:0 0 8px}.band img{width:100%;border-radius:18px;background:#fff;padding:10px}
+@media(max-width:720px){.band{grid-template-columns:1fr}}
 .post{max-width:680px}.post p,.post li{font-size:18px}.post h2{font-size:26px;margin-top:40px}
 .newsletter{background:var(--butter);border-radius:24px;padding:28px;margin-top:70px}
 footer{margin-top:70px;padding:30px 0;color:var(--mut);font-size:15px;border-top:2px dashed var(--line)}
-@media(max-width:720px){.hero .wrap{grid-template-columns:1fr;padding-bottom:40px}.hero img{transform:none}.promise,.promise:nth-child(even){grid-template-columns:1fr;direction:ltr}.three{grid-template-columns:1fr 1fr}nav a{margin-left:12px;font-size:14px;white-space:nowrap}header .wrap{height:60px}.brand{font-size:19px;white-space:nowrap}.brand i{width:26px;height:26px}}
+@media(max-width:720px){.hero .wrap{grid-template-columns:1fr;padding-bottom:40px}.hero img{transform:none}.promise,.promise:nth-child(even){grid-template-columns:1fr;direction:ltr}.three{grid-template-columns:1fr 1fr}nav a{margin-left:10px;font-size:14px;white-space:nowrap}nav a[href$="about.html"],nav a[href$="/blog/"]{display:none}.topics{grid-template-columns:1fr 1fr;gap:12px}.topic{padding:10px 10px 14px;border-radius:18px}.topic p{display:none}.topic h3{font-size:17px;margin-top:8px}header .wrap{height:60px}.brand{font-size:19px;white-space:nowrap}.brand i{width:26px;height:26px}}
 @media(prefers-reduced-motion:reduce){.book img{transition:none}html{scroll-behavior:auto}}
 """
 
@@ -83,9 +112,9 @@ def page(title, desc, body, path, jsonld=None, canonical=None):
     ld = f'<script type="application/ld+json">{json.dumps(jsonld)}</script>' if jsonld else ""
     html = f"""<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>{title}</title><meta name="description" content="{desc}"><link rel="canonical" href="{can}">
-<meta property="og:title" content="{title}"><meta property="og:description" content="{desc}"><meta property="og:type" content="website"><meta property="og:image" content="{SITE}/img/hero_party.jpg"><meta property="og:url" content="{can}">
+<meta property="og:title" content="{title}"><meta property="og:description" content="{desc}"><meta property="og:type" content="website"><meta property="og:image" content="{SITE}/img/hero_group.png"><meta property="og:url" content="{can}">
 <style>{CSS}</style>{ld}</head><body>
-<header><div class="wrap"><a class="brand" href="{SITE}/"><i></i>Hop Along Books</a><nav><a href="{SITE}/#books">Books</a><a href="{SITE}/blog/">Guides</a><a href="{SITE}/about.html">About</a></nav></div></header>
+<header><div class="wrap"><a class="brand" href="{SITE}/"><i></i>Hop Along Books</a><nav><a href="{SITE}/#topics">Books</a><a href="{SITE}/free.html">Free pages</a><a href="{SITE}/blog/">Guides</a><a href="{SITE}/about.html">About</a></nav></div></header>
 <main class="wrap">{body}</main>
 <footer><div class="wrap">&copy; 2026 Hop Along Books. Color by number books for ages 3-5. Available on Amazon. &middot; <a href="{SITE}/about.html">About</a> &middot; <a href="{SITE}/blog/">Guides for parents</a></div></footer>
 </body></html>"""
@@ -96,20 +125,33 @@ def book_card(b):
 <h3>{b['short']}</h3><p>{b['sub']}</p><span class="tag">{b['status']}</span></a>"""
 
 # ---------- home ----------
+def topic_count(t): 
+    n=len([b for b in BOOKS if b["topic"]==t["slug"]]); return f"{n} book" + ("" if n==1 else "s")
 home_body = f"""
 <div class="hero" style="margin:0 -20px"><div class="wrap">
 <div><h1>Coloring books a three-year-old can finish by herself</h1>
-<p>Big shapes, color names written on every page, and a picture that still looks like a dinosaur when she's done. Made for ages 3 to 5, with a mom's patience in mind.</p>
-<a class="btn" href="#books">Pick a book</a></div>
-<img src="{SITE}/img/hero_party.jpg" alt="A finished page: three dinosaurs at a birthday party">
-</div><svg class="wave" viewBox="0 0 1200 40" preserveAspectRatio="none" aria-hidden="true"><path d="M0,20 C150,45 300,-5 450,20 C600,45 750,-5 900,20 C1050,45 1150,0 1200,20 L1200,40 L0,40 Z" fill="#FFF8EC"/><rect width="1200" height="20" fill="#7FD3F0" style="mix-blend-mode:normal" y="-20"/></svg></div>
-<h2 id="books">Pick a book</h2>
-<p style="margin:-6px 0 22px;color:var(--mut)">Each one is 45 pictures, easy to harder, with an activity page behind every picture. More on the way.</p>
-<div class="shelf">{''.join(book_card(b) for b in BOOKS)}</div>
+<p>Big shapes, color names written on every page, and pictures that still look like a fire truck or a kitten when she's done. Made for ages 3 to 5.</p>
+<a class="btn" href="#topics">Find a book</a> <a class="btn soft" href="{SITE}/free.html" style="margin-left:8px">Free pages to print</a></div>
+<img class="hero-art" src="{SITE}/img/hero_group.png" alt="Finished pages from Hop Along books: a T-Rex, a fire truck, a cat, a rocket, a penguin and a baby dinosaur">
+</div><svg class="wave" viewBox="0 0 1200 40" preserveAspectRatio="none" aria-hidden="true"><path d="M0,20 C150,45 300,-5 450,20 C600,45 750,-5 900,20 C1050,45 1150,0 1200,20 L1200,40 L0,40 Z" fill="#FFF8EC"/></svg></div>
+
+<h2 id="topics">What does your kid love?</h2>
+<div class="topics">{''.join(f'<a class="topic" style="background:{t["color"]}" href="{SITE}/topics/{t["slug"]}.html"><img src="{SITE}/img/{t["img"]}" alt=""><h3>{t["name"]}</h3><p>{t["blurb"]}</p><span class="count">{topic_count(t)}</span></a>' for t in TOPICS)}</div>
+<div class="soon" aria-label="Coming soon">{''.join(f'<span>{x} &middot; coming soon</span>' for x in SOON)}</div>
+
+<h2>How old is she?</h2>
+<div class="ages">{''.join((f'<a class="age" href="{SITE}/ages/{g["slug"]}.html"><b>{g["name"]}</b>{g["blurb"]}</a>' if g["live"] else f'<div class="age off"><b>{g["name"]}</b>{g["blurb"]} Coming next.</div>') for g in AGES)}</div>
+
 <h2>Why moms keep these in the car</h2>
 <div class="promise"><img src="{SITE}/img/book3_B3_key.jpg" alt="Color key with the color name next to each number"><div><h3>She can read the key herself</h3><p>Every number has a swatch and the color's name - Red, Blue, Green. No squinting at a tiny dot, and no shades you don't own. For Sky Blue, any light blue crayon works.</p></div></div>
 <div class="promise"><img src="{SITE}/img/hero_trex.jpg" alt="Level 1 page: a T-Rex with three big areas to color"><div><h3>Big enough for a fist full of crayon</h3><p>Level 1 spaces are about an inch wide. Even the busiest Level 5 scene keeps every space around half an inch. We measure every page so she stays inside the lines on her own.</p></div></div>
 <div class="promise"><img src="{SITE}/img/book3_B2_back.jpg" alt="The activity page behind each picture"><div><h3>Flip it over, there's more</h3><p>Pictures are printed on one side, so markers can't ruin the next one. Behind each picture: a fact to read aloud, a strip to test colors, a face to circle, and a box to draw her own.</p></div></div>
+
+<div class="band"><div><h2>Try a page tonight, free</h2><p>Print a real page from each book, with its answer picture. See if it's the right level before you buy.</p><a class="btn" href="{SITE}/free.html">Print free pages</a></div><img src="{SITE}/img/free_cat.jpg" alt="Free printable page: a cat to color by number"></div>
+
+<h2>All books</h2>
+<div class="shelf">{''.join(book_card(b) for b in BOOKS)}</div>
+
 <h2>For parents</h2>
 <div class="guides">
 <a class="guide" href="{SITE}/blog/how-to-choose-a-color-by-number-book-for-a-3-year-old.html"><h3>How to choose a color by number book for a 3-year-old</h3><p>Five things to check before you buy, and the mistake most books make.</p></a>
@@ -242,8 +284,30 @@ page("About Hop Along Books", "Hop Along Books makes color by number books for a
 <h2>The books</h2><div class="shelf">{''.join(book_card(b) for b in BOOKS)}</div>
 """, "about.html")
 
+
+# ---------- topic pages ----------
+for t in TOPICS:
+    bs=[b for b in BOOKS if b["topic"]==t["slug"]]
+    page(f"{t['name']} Color by Number Books for Kids | Hop Along Books", f"{t['name']} color by number books for ages 3-5: {t['blurb']} Big shapes and color names on every key.",
+         f"""<div style="background:{t['color']};border-radius:28px;padding:30px;margin-top:28px"><h1>{t['name']}</h1><p style="font-size:19px;margin:10px 0 0">{t['blurb']}</p></div>
+<h2>Books</h2><div class="shelf">{''.join(book_card(b) for b in bs)}</div>
+<h2>Other topics</h2><div class="topics">{''.join(f'<a class="topic" style="background:{o["color"]}" href="{SITE}/topics/{o["slug"]}.html"><img src="{SITE}/img/{o["img"]}" alt=""><h3>{o["name"]}</h3><p>{o["blurb"]}</p></a>' for o in TOPICS if o["slug"]!=t["slug"])}</div>""",
+         f"topics/{t['slug']}.html")
+# ---------- age pages ----------
+for g in [x for x in AGES if x["live"]]:
+    bs=[b for b in BOOKS if b["age"]==g["slug"]]
+    page(f"Color by Number Books for {g['name']} | Hop Along Books", f"Color by number books for kids {g['name'].lower()}: {g['blurb']}",
+         f"""<div style="background:var(--butter);border-radius:28px;padding:30px;margin-top:28px"><h1>{g['name']}</h1><p style="font-size:19px;margin:10px 0 0">{g['blurb']} Five levels in every book, so the same book still works at 5.</p></div>
+<h2>Books</h2><div class="shelf">{''.join(book_card(b) for b in bs)}</div>""", f"ages/{g['slug']}.html")
+# ---------- free page ----------
+bymap={b["slug"]:b for b in BOOKS}
+page("Free Color by Number Pages to Print | Hop Along Books", "Print free color by number pages for ages 3-5, each with its answer picture. Real pages from Hop Along books.",
+     f"""<div style="background:var(--butter);border-radius:28px;padding:30px;margin-top:28px"><h1>Free pages to print</h1><p style="font-size:19px;margin:10px 0 0">One real page from each book, plus its answer picture. Print on regular paper, grab the crayons, and see if the level is right for her.</p></div>
+<h2>Pick a page</h2><div class="freebie">{''.join(f'<a class="card" href="{SITE}/free/hop-along-free-page-{f["slug"]}.pdf" download><img src="{SITE}/img/free_{f["slug"]}.jpg" alt="{f["name"]} color by number page"><h3>{f["name"]}</h3><p style="color:var(--mut);margin:0">{f["level"]} &middot; from {bymap[f["book"]]["short"]}</p><span class="btn" style="margin-top:12px">Download PDF</span></a>' for f in FREE)}</div>
+<p style="margin-top:30px;color:var(--mut)">Free for personal and classroom use. Please don't resell.</p>""", "free.html")
+
 # sitemap + robots
-urls = [SITE+"/", SITE+"/about.html", SITE+"/blog/"] + [f"{SITE}/books/{b['slug']}.html" for b in BOOKS] + [f"{SITE}/blog/{p[0]}.html" for p in POSTS]
+urls = [SITE+"/", SITE+"/about.html", SITE+"/blog/", SITE+"/free.html"] + [f"{SITE}/topics/{t['slug']}.html" for t in TOPICS] + [f"{SITE}/ages/{g['slug']}.html" for g in AGES if g["live"]] + [f"{SITE}/books/{b['slug']}.html" for b in BOOKS] + [f"{SITE}/blog/{p[0]}.html" for p in POSTS]
 open(os.path.join(ROOT,"sitemap.xml"),"w").write('<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">'+"".join(f"<url><loc>{u}</loc><lastmod>{TODAY}</lastmod></url>" for u in urls)+"</urlset>")
 open(os.path.join(ROOT,"robots.txt"),"w").write(f"User-agent: *\nAllow: /\nSitemap: {SITE}/sitemap.xml\n")
 open(os.path.join(ROOT,".nojekyll"),"w").write("")

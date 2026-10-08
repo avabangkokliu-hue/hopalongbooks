@@ -1,6 +1,6 @@
 <!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Hop Along Books - Color by Number for Kids Ages 3-5</title><meta name="description" content="Color by number books made for ages 3-5: big shapes, color names on every key, one picture per page, a fun activity page behind each. Trucks, animals and dinosaurs. On Amazon."><link rel="canonical" href="https://avabangkokliu-hue.github.io/hopalongbooks/">
-<meta property="og:title" content="Hop Along Books - Color by Number for Kids Ages 3-5"><meta property="og:description" content="Color by number books made for ages 3-5: big shapes, color names on every key, one picture per page, a fun activity page behind each. Trucks, animals and dinosaurs. On Amazon."><meta property="og:type" content="website"><meta property="og:image" content="https://avabangkokliu-hue.github.io/hopalongbooks/img/hero_party.jpg"><meta property="og:url" content="https://avabangkokliu-hue.github.io/hopalongbooks/">
+<meta property="og:title" content="Hop Along Books - Color by Number for Kids Ages 3-5"><meta property="og:description" content="Color by number books made for ages 3-5: big shapes, color names on every key, one picture per page, a fun activity page behind each. Trucks, animals and dinosaurs. On Amazon."><meta property="og:type" content="website"><meta property="og:image" content="https://avabangkokliu-hue.github.io/hopalongbooks/img/hero_group.png"><meta property="og:url" content="https://avabangkokliu-hue.github.io/hopalongbooks/">
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Nunito:wght@400;600;700;800&display=swap');
 :root{--paper:#FFF8EC;--ink:#2B2A4C;--mut:#6B6A85;--butter:#FFD166;--sky:#7FD3F0;--coral:#FF7B6B;--leaf:#5BC98A;--line:#EADFC8}
@@ -38,30 +38,58 @@ h1{font-size:clamp(34px,5.2vw,56px)}h2{font-size:clamp(26px,3.4vw,36px);margin:6
 .guides{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px}
 .guide{background:#fff;border-radius:18px;padding:22px;text-decoration:none;color:var(--ink);border:2px solid transparent}
 .guide:hover{border-color:var(--butter)}.guide p{color:var(--mut);font-size:15px;margin:6px 0 0}
+.hero img.hero-art{width:100%;display:block;background:none;padding:0;transform:none;border-radius:0}
+.topics{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:20px}
+.topic{display:block;border-radius:24px;padding:18px 18px 22px;text-decoration:none;color:var(--ink);transition:transform .15s}
+.topic:hover{transform:translateY(-3px)}
+.topic img{width:100%;aspect-ratio:1/1;object-fit:contain;background:#fff;border-radius:16px;padding:10px}
+.topic h3{margin:14px 0 2px}.topic p{margin:0;font-size:15px;color:#3a3958}.topic .count{font-weight:800;font-size:14px;margin-top:8px;display:block}
+.soon{display:flex;flex-wrap:wrap;gap:10px;margin-top:16px}.soon span{border:2px dashed var(--line);border-radius:999px;padding:6px 14px;color:var(--mut);font-weight:700;font-size:15px}
+.ages{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px}
+.age{display:block;background:#fff;border-radius:20px;padding:20px 22px;text-decoration:none;color:var(--ink);border:3px solid var(--butter)}
+.age.off{border-style:dashed;border-color:var(--line);color:var(--mut)}
+.age b{font-family:Fredoka,sans-serif;font-size:26px;font-weight:600;display:block}
+.freebie{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:22px}
+.freebie a.card{display:block;background:#fff;border-radius:20px;padding:16px;text-decoration:none;color:var(--ink)}
+.freebie img{width:100%;aspect-ratio:1/1;object-fit:contain}
+.band{background:var(--butter);border-radius:28px;padding:30px;margin-top:64px;display:grid;grid-template-columns:1.3fr 1fr;gap:24px;align-items:center}
+.band h2{margin:0 0 8px}.band img{width:100%;border-radius:18px;background:#fff;padding:10px}
+@media(max-width:720px){.band{grid-template-columns:1fr}}
 .post{max-width:680px}.post p,.post li{font-size:18px}.post h2{font-size:26px;margin-top:40px}
 .newsletter{background:var(--butter);border-radius:24px;padding:28px;margin-top:70px}
 footer{margin-top:70px;padding:30px 0;color:var(--mut);font-size:15px;border-top:2px dashed var(--line)}
-@media(max-width:720px){.hero .wrap{grid-template-columns:1fr;padding-bottom:40px}.hero img{transform:none}.promise,.promise:nth-child(even){grid-template-columns:1fr;direction:ltr}.three{grid-template-columns:1fr 1fr}nav a{margin-left:12px;font-size:14px;white-space:nowrap}header .wrap{height:60px}.brand{font-size:19px;white-space:nowrap}.brand i{width:26px;height:26px}}
+@media(max-width:720px){.hero .wrap{grid-template-columns:1fr;padding-bottom:40px}.hero img{transform:none}.promise,.promise:nth-child(even){grid-template-columns:1fr;direction:ltr}.three{grid-template-columns:1fr 1fr}nav a{margin-left:10px;font-size:14px;white-space:nowrap}nav a[href$="about.html"],nav a[href$="/blog/"]{display:none}.topics{grid-template-columns:1fr 1fr;gap:12px}.topic{padding:10px 10px 14px;border-radius:18px}.topic p{display:none}.topic h3{font-size:17px;margin-top:8px}header .wrap{height:60px}.brand{font-size:19px;white-space:nowrap}.brand i{width:26px;height:26px}}
 @media(prefers-reduced-motion:reduce){.book img{transition:none}html{scroll-behavior:auto}}
 </style><script type="application/ld+json">{"@context": "https://schema.org", "@type": "Organization", "name": "Hop Along Books", "url": "https://avabangkokliu-hue.github.io/hopalongbooks/", "description": "Publisher of color by number books for children ages 3-5."}</script></head><body>
-<header><div class="wrap"><a class="brand" href="https://avabangkokliu-hue.github.io/hopalongbooks/"><i></i>Hop Along Books</a><nav><a href="https://avabangkokliu-hue.github.io/hopalongbooks/#books">Books</a><a href="https://avabangkokliu-hue.github.io/hopalongbooks/blog/">Guides</a><a href="https://avabangkokliu-hue.github.io/hopalongbooks/about.html">About</a></nav></div></header>
+<header><div class="wrap"><a class="brand" href="https://avabangkokliu-hue.github.io/hopalongbooks/"><i></i>Hop Along Books</a><nav><a href="https://avabangkokliu-hue.github.io/hopalongbooks/#topics">Books</a><a href="https://avabangkokliu-hue.github.io/hopalongbooks/free.html">Free pages</a><a href="https://avabangkokliu-hue.github.io/hopalongbooks/blog/">Guides</a><a href="https://avabangkokliu-hue.github.io/hopalongbooks/about.html">About</a></nav></div></header>
 <main class="wrap">
 <div class="hero" style="margin:0 -20px"><div class="wrap">
 <div><h1>Coloring books a three-year-old can finish by herself</h1>
-<p>Big shapes, color names written on every page, and a picture that still looks like a dinosaur when she's done. Made for ages 3 to 5, with a mom's patience in mind.</p>
-<a class="btn" href="#books">Pick a book</a></div>
-<img src="https://avabangkokliu-hue.github.io/hopalongbooks/img/hero_party.jpg" alt="A finished page: three dinosaurs at a birthday party">
-</div><svg class="wave" viewBox="0 0 1200 40" preserveAspectRatio="none" aria-hidden="true"><path d="M0,20 C150,45 300,-5 450,20 C600,45 750,-5 900,20 C1050,45 1150,0 1200,20 L1200,40 L0,40 Z" fill="#FFF8EC"/><rect width="1200" height="20" fill="#7FD3F0" style="mix-blend-mode:normal" y="-20"/></svg></div>
-<h2 id="books">Pick a book</h2>
-<p style="margin:-6px 0 22px;color:var(--mut)">Each one is 45 pictures, easy to harder, with an activity page behind every picture. More on the way.</p>
-<div class="shelf"><a class="book" href="https://avabangkokliu-hue.github.io/hopalongbooks/books/trucks-trains-rockets.html"><img src="https://avabangkokliu-hue.github.io/hopalongbooks/img/book1_cover.jpg" alt="Trucks, Trains, Rockets & Things That Go cover">
-<h3>Things That Go</h3><p>Color by Number for Kids Ages 3-5</p><span class="tag">Published October 2026</span></a><a class="book" href="https://avabangkokliu-hue.github.io/hopalongbooks/books/cute-animals.html"><img src="https://avabangkokliu-hue.github.io/hopalongbooks/img/book2_cover.jpg" alt="Cute Animals Color by Number for Kids Ages 3-5 cover">
-<h3>Cute Animals</h3><p>Pets, Farm, Zoo & Dinosaurs</p><span class="tag">Published October 2026</span></a><a class="book" href="https://avabangkokliu-hue.github.io/hopalongbooks/books/dinosaurs.html"><img src="https://avabangkokliu-hue.github.io/hopalongbooks/img/book3_cover.jpg" alt="Dinosaurs Color by Number for Kids Ages 3-5 cover">
-<h3>Dinosaurs</h3><p>A Day in the Life of Silly Dinos</p><span class="tag">Coming October 2026</span></a></div>
+<p>Big shapes, color names written on every page, and pictures that still look like a fire truck or a kitten when she's done. Made for ages 3 to 5.</p>
+<a class="btn" href="#topics">Find a book</a> <a class="btn soft" href="https://avabangkokliu-hue.github.io/hopalongbooks/free.html" style="margin-left:8px">Free pages to print</a></div>
+<img class="hero-art" src="https://avabangkokliu-hue.github.io/hopalongbooks/img/hero_group.png" alt="Finished pages from Hop Along books: a T-Rex, a fire truck, a cat, a rocket, a penguin and a baby dinosaur">
+</div><svg class="wave" viewBox="0 0 1200 40" preserveAspectRatio="none" aria-hidden="true"><path d="M0,20 C150,45 300,-5 450,20 C600,45 750,-5 900,20 C1050,45 1150,0 1200,20 L1200,40 L0,40 Z" fill="#FFF8EC"/></svg></div>
+
+<h2 id="topics">What does your kid love?</h2>
+<div class="topics"><a class="topic" style="background:#7FD3F0" href="https://avabangkokliu-hue.github.io/hopalongbooks/topics/things-that-go.html"><img src="https://avabangkokliu-hue.github.io/hopalongbooks/img/hero_truck.jpg" alt=""><h3>Things That Go</h3><p>Trucks, trains, diggers, boats and rockets.</p><span class="count">1 book</span></a><a class="topic" style="background:#5BC98A" href="https://avabangkokliu-hue.github.io/hopalongbooks/topics/animals.html"><img src="https://avabangkokliu-hue.github.io/hopalongbooks/img/hero_cat.jpg" alt=""><h3>Animals</h3><p>Pets, farm friends, zoo animals and sea creatures.</p><span class="count">1 book</span></a><a class="topic" style="background:#C7B6F2" href="https://avabangkokliu-hue.github.io/hopalongbooks/topics/dinosaurs.html"><img src="https://avabangkokliu-hue.github.io/hopalongbooks/img/hero_trex.jpg" alt=""><h3>Dinosaurs</h3><p>Silly dinos brushing teeth, baking cakes and driving trucks.</p><span class="count">1 book</span></a></div>
+<div class="soon" aria-label="Coming soon"><span>Ocean &middot; coming soon</span><span>Space &middot; coming soon</span><span>Holidays &middot; coming soon</span><span>Bugs & Garden &middot; coming soon</span></div>
+
+<h2>How old is she?</h2>
+<div class="ages"><a class="age" href="https://avabangkokliu-hue.github.io/hopalongbooks/ages/3-5.html"><b>Ages 3-5</b>Big shapes, 3 to 8 colors, color names on every key.</a><div class="age off"><b>Ages 5-7</b>Smaller spaces and more colors. Coming next.</div></div>
+
 <h2>Why moms keep these in the car</h2>
 <div class="promise"><img src="https://avabangkokliu-hue.github.io/hopalongbooks/img/book3_B3_key.jpg" alt="Color key with the color name next to each number"><div><h3>She can read the key herself</h3><p>Every number has a swatch and the color's name - Red, Blue, Green. No squinting at a tiny dot, and no shades you don't own. For Sky Blue, any light blue crayon works.</p></div></div>
 <div class="promise"><img src="https://avabangkokliu-hue.github.io/hopalongbooks/img/hero_trex.jpg" alt="Level 1 page: a T-Rex with three big areas to color"><div><h3>Big enough for a fist full of crayon</h3><p>Level 1 spaces are about an inch wide. Even the busiest Level 5 scene keeps every space around half an inch. We measure every page so she stays inside the lines on her own.</p></div></div>
 <div class="promise"><img src="https://avabangkokliu-hue.github.io/hopalongbooks/img/book3_B2_back.jpg" alt="The activity page behind each picture"><div><h3>Flip it over, there's more</h3><p>Pictures are printed on one side, so markers can't ruin the next one. Behind each picture: a fact to read aloud, a strip to test colors, a face to circle, and a box to draw her own.</p></div></div>
+
+<div class="band"><div><h2>Try a page tonight, free</h2><p>Print a real page from each book, with its answer picture. See if it's the right level before you buy.</p><a class="btn" href="https://avabangkokliu-hue.github.io/hopalongbooks/free.html">Print free pages</a></div><img src="https://avabangkokliu-hue.github.io/hopalongbooks/img/free_cat.jpg" alt="Free printable page: a cat to color by number"></div>
+
+<h2>All books</h2>
+<div class="shelf"><a class="book" href="https://avabangkokliu-hue.github.io/hopalongbooks/books/trucks-trains-rockets.html"><img src="https://avabangkokliu-hue.github.io/hopalongbooks/img/book1_cover.jpg" alt="Trucks, Trains, Rockets & Things That Go cover">
+<h3>Things That Go</h3><p>Color by Number for Kids Ages 3-5</p><span class="tag">Published October 2026</span></a><a class="book" href="https://avabangkokliu-hue.github.io/hopalongbooks/books/cute-animals.html"><img src="https://avabangkokliu-hue.github.io/hopalongbooks/img/book2_cover.jpg" alt="Cute Animals Color by Number for Kids Ages 3-5 cover">
+<h3>Cute Animals</h3><p>Pets, Farm, Zoo & Dinosaurs</p><span class="tag">Published October 2026</span></a><a class="book" href="https://avabangkokliu-hue.github.io/hopalongbooks/books/dinosaurs.html"><img src="https://avabangkokliu-hue.github.io/hopalongbooks/img/book3_cover.jpg" alt="Dinosaurs Color by Number for Kids Ages 3-5 cover">
+<h3>Dinosaurs</h3><p>A Day in the Life of Silly Dinos</p><span class="tag">Coming October 2026</span></a></div>
+
 <h2>For parents</h2>
 <div class="guides">
 <a class="guide" href="https://avabangkokliu-hue.github.io/hopalongbooks/blog/how-to-choose-a-color-by-number-book-for-a-3-year-old.html"><h3>How to choose a color by number book for a 3-year-old</h3><p>Five things to check before you buy, and the mistake most books make.</p></a>
