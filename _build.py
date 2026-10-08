@@ -94,9 +94,27 @@ h1{font-size:clamp(34px,5.2vw,56px)}h2{font-size:clamp(26px,3.4vw,36px);margin:6
 .age{display:block;background:#fff;border-radius:20px;padding:20px 22px;text-decoration:none;color:var(--ink);border:3px solid var(--butter)}
 .age.off{border-style:dashed;border-color:var(--line);color:var(--mut)}
 .age b{font-family:Fredoka,sans-serif;font-size:26px;font-weight:600;display:block}
-.freebie{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:22px}
-.freebie a.card{display:block;background:#fff;border-radius:20px;padding:16px;text-decoration:none;color:var(--ink)}
-.freebie img{width:100%;aspect-ratio:1/1;object-fit:contain}
+.freebie{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;align-items:stretch}
+.fcard{display:flex;flex-direction:column;background:#fff;border-radius:24px;overflow:hidden;box-shadow:0 8px 0 var(--line)}
+.fcard .top{padding:18px 18px 0;border-top:8px solid var(--c)}
+.fcard .pill{display:inline-block;background:var(--c);color:#fff;border-radius:999px;padding:3px 12px;font-size:13px;font-weight:800}
+.fcard .art{display:block;width:100%;aspect-ratio:1/1;object-fit:contain;background:var(--paper);border-radius:18px;padding:14px;margin:14px 0 0}
+.fcard h3{margin:16px 18px 2px}.fcard .from{margin:0 18px;color:var(--mut);font-size:15px}
+.fcard .inside{margin:16px 18px 0;padding:14px;border:2px dashed var(--line);border-radius:16px}
+.fcard .inside b{display:block;font-size:13px;letter-spacing:.04em;text-transform:uppercase;color:var(--mut);margin-bottom:10px}
+.fcard .pair{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.fcard .pair img{width:100%;aspect-ratio:8.5/11;object-fit:cover;border:1px solid var(--line);border-radius:6px;background:#fff}
+.fcard .pair span{display:block;font-size:13px;text-align:center;margin-top:4px;color:var(--mut)}
+.fcard .go{margin:auto 18px 18px;padding-top:18px}.fcard .go .btn{display:block;text-align:center}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin:26px 0 0;padding:0;list-style:none;counter-reset:s}
+.steps li{background:#fff;border-radius:18px;padding:16px 18px;font-weight:700;counter-increment:s;display:flex;gap:12px;align-items:center}
+.steps li:before{content:counter(s);flex:none;width:34px;height:34px;border-radius:50%;background:var(--coral);color:#fff;display:grid;place-items:center;font-family:Fredoka,sans-serif}
+.signup{background:var(--ink);color:#fff;border-radius:28px;padding:28px 30px;margin-top:28px;display:grid;grid-template-columns:1.1fr 1fr;gap:24px;align-items:center}
+.signup h2{margin:0 0 6px;color:#fff}.signup p{margin:0;color:#d9d8ef}
+.signup form{display:flex;gap:10px;flex-wrap:wrap}.signup input[type=email]{flex:1 1 220px;padding:14px 18px;border-radius:999px;border:0;font:inherit;font-size:17px}
+.signup small{display:block;width:100%;color:#b9b8d6;font-size:13px}
+.signup.done form{display:none}.signup .ok{display:none;font-weight:800;color:var(--butter)}.signup.done .ok{display:block}
+@media(max-width:860px){.freebie{grid-template-columns:1fr;max-width:420px;margin:0 auto}.steps,.signup{grid-template-columns:1fr}}
 .band{background:var(--butter);border-radius:28px;padding:30px;margin-top:64px;display:grid;grid-template-columns:1.3fr 1fr;gap:24px;align-items:center}
 .band h2{margin:0 0 8px}.band img{width:100%;border-radius:18px;background:#fff;padding:10px}
 @media(max-width:720px){.band{grid-template-columns:1fr}}
@@ -300,10 +318,34 @@ for g in [x for x in AGES if x["live"]]:
          f"""<div style="background:var(--butter);border-radius:28px;padding:30px;margin-top:28px"><h1>{g['name']}</h1><p style="font-size:19px;margin:10px 0 0">{g['blurb']} Five levels in every book, so the same book still works at 5.</p></div>
 <h2>Books</h2><div class="shelf">{''.join(book_card(b) for b in bs)}</div>""", f"ages/{g['slug']}.html")
 # ---------- free page ----------
+# Email gate. Leave None until the email service form exists; then set e.g.
+# GATE = dict(action="https://app.kit.com/forms/XXXX/subscriptions", field="email_address")
+GATE = None
 bymap={b["slug"]:b for b in BOOKS}
+def fcard(f):
+    b=bymap[f["book"]]; pdf=f"{SITE}/free/hop-along-free-page-{f['slug']}.pdf"
+    btn=(f'<a class="btn" href="{pdf}" download>Download free PDF</a>' if not GATE else
+         f'<a class="btn gated" href="#signup" data-pdf="{pdf}">Get this page free</a>')
+    return f"""<article class="fcard" style="--c:{b['color']}"><div class="top"><span class="pill">{f['level']}</span>
+<img class="art" src="{SITE}/img/free_{f['slug']}.jpg" alt="{f['name']} color by number picture" loading="lazy"></div>
+<h3>{f['name']}</h3><p class="from">From <a href="{SITE}/books/{b['slug']}.html">{b['short']}</a></p>
+<div class="inside"><b>What you'll print</b><div class="pair">
+<figure><img src="{SITE}/img/free_{f['slug']}_page.jpg" alt="Page 1: {f['name']} numbered page with color key" loading="lazy"><span>1. Page to color</span></figure>
+<figure><img src="{SITE}/img/free_{f['slug']}_answer.jpg" alt="Page 2: {f['name']} answer picture" loading="lazy"><span>2. Answer picture</span></figure></div></div>
+<div class="go">{btn}</div></article>"""
+signup = "" if not GATE else f"""<section class="signup" id="signup"><div><h2>Get all 3 pages free</h2><p>Enter your email and the download buttons unlock right away. Now and then we'll send new free pages and news about new books.</p></div>
+<div><form id="gate" action="{GATE['action']}" method="post"><input type="email" name="{GATE['field']}" required placeholder="Your email" aria-label="Your email"><button class="btn" type="submit">Unlock pages</button>
+<small>No spam. Unsubscribe any time with one click.</small></form><p class="ok">Thank you! Your pages are unlocked below.</p></div></section>
+<script>(function(){{var K="hab_free_ok",sec=document.getElementById("signup"),f=document.getElementById("gate");
+function open(){{sec.classList.add("done");document.querySelectorAll("a.gated").forEach(function(a){{a.href=a.dataset.pdf;a.setAttribute("download","");a.textContent="Download free PDF";a.classList.remove("gated")}})}}
+try{{if(localStorage.getItem(K))open()}}catch(e){{}}
+f.addEventListener("submit",function(e){{e.preventDefault();fetch(f.action,{{method:"POST",mode:"no-cors",body:new FormData(f)}}).finally(function(){{try{{localStorage.setItem(K,"1")}}catch(e){{}}open()}})}});}})();</script>"""
+steps = ("<li>Enter your email</li><li>Download and print</li><li>Color, then check the answer</li>" if GATE else
+         "<li>Download and print</li><li>Grab the crayons</li><li>Color, then check the answer</li>")
 page("Free Color by Number Pages to Print | Hop Along Books", "Print free color by number pages for ages 3-5, each with its answer picture. Real pages from Hop Along books.",
-     f"""<div style="background:var(--butter);border-radius:28px;padding:30px;margin-top:28px"><h1>Free pages to print</h1><p style="font-size:19px;margin:10px 0 0">One real page from each book, plus its answer picture. Print on regular paper, grab the crayons, and see if the level is right for your child.</p></div>
-<h2>Pick a page</h2><div class="freebie">{''.join(f'<a class="card" href="{SITE}/free/hop-along-free-page-{f["slug"]}.pdf" download><img src="{SITE}/img/free_{f["slug"]}.jpg" alt="{f["name"]} color by number page"><h3>{f["name"]}</h3><p style="color:var(--mut);margin:0">{f["level"]} &middot; from {bymap[f["book"]]["short"]}</p><span class="btn" style="margin-top:12px">Download PDF</span></a>' for f in FREE)}</div>
+     f"""<div style="background:var(--butter);border-radius:28px;padding:30px;margin-top:28px"><h1>Free pages to print</h1><p style="font-size:19px;margin:10px 0 0;max-width:36em">One real page from each book, plus its answer picture. Print on regular paper and see if the level is right for your child before you buy.</p>
+<ol class="steps">{steps}</ol></div>{signup}
+<h2>Pick a page</h2><div class="freebie">{''.join(fcard(f) for f in FREE)}</div>
 <p style="margin-top:30px;color:var(--mut)">Free for personal and classroom use. Please don't resell.</p>""", "free.html")
 
 # sitemap + robots
