@@ -35,25 +35,47 @@ BOOKS = [
 ]
 
 CSS = """
-:root{--ink:#1D3557;--mut:#5b6472;--bg:#fff;--card:#f4f6fa;--line:#e3e7ee;--acc:#FFD166}
-*{box-sizing:border-box}body{margin:0;font-family:-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;color:#222;background:var(--bg);line-height:1.55}
-a{color:var(--ink)}.wrap{max-width:960px;margin:0 auto;padding:0 20px}
-header{border-bottom:1px solid var(--line)}header .wrap{display:flex;align-items:center;justify-content:space-between;height:64px}
-.brand{font-weight:800;font-size:20px;color:var(--ink);text-decoration:none}.brand span{background:var(--acc);border-radius:6px;padding:2px 8px;margin-right:6px}
-nav a{margin-left:18px;text-decoration:none;color:var(--mut);font-weight:600}
-h1{font-size:34px;line-height:1.2;color:var(--ink);margin:36px 0 10px}h2{color:var(--ink);margin-top:36px}
-.lead{font-size:19px;color:#333;max-width:700px}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:22px;margin:28px 0}
-.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:16px}.card img{width:100%;border-radius:10px;display:block}
-.card h3{margin:12px 0 4px;font-size:18px}.card p{margin:4px 0;color:var(--mut);font-size:15px}
-.btn{display:inline-block;background:var(--ink);color:#fff;text-decoration:none;padding:10px 18px;border-radius:10px;font-weight:700;margin-top:10px}
-.btn.alt{background:#fff;color:var(--ink);border:2px solid var(--ink)}
-.spec{width:100%;border-collapse:collapse;margin:16px 0}.spec th,.spec td{text-align:left;padding:8px 10px;border-bottom:1px solid var(--line);vertical-align:top}.spec th{width:34%;color:var(--mut);font-weight:600}
-.three{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}.three img{width:100%;border-radius:10px;border:1px solid var(--line)}.three figcaption{font-size:14px;color:var(--mut);margin-top:6px}
-.faq h3{margin-bottom:4px}.faq p{margin-top:0;color:#333}
-footer{border-top:1px solid var(--line);margin-top:60px;padding:28px 0;color:var(--mut);font-size:14px}
-.post{max-width:720px}.post p,.post li{font-size:17px}.post h2{font-size:24px}
-@media(max-width:600px){.three{grid-template-columns:1fr 1fr}h1{font-size:28px}nav a{margin-left:12px;font-size:14px}}
+@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Nunito:wght@400;600;700;800&display=swap');
+:root{--paper:#FFF8EC;--ink:#2B2A4C;--mut:#6B6A85;--butter:#FFD166;--sky:#7FD3F0;--coral:#FF7B6B;--leaf:#5BC98A;--line:#EADFC8}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{margin:0;font-family:Nunito,system-ui,sans-serif;color:var(--ink);background:var(--paper);line-height:1.6;font-size:17px}
+a{color:var(--ink)}img{max-width:100%}
+.wrap{max-width:1040px;margin:0 auto;padding:0 20px}
+header .wrap{display:flex;align-items:center;justify-content:space-between;height:72px}
+.brand{font-family:Fredoka,sans-serif;font-weight:700;font-size:24px;color:var(--ink);text-decoration:none;display:flex;align-items:center;gap:10px}
+.brand i{width:34px;height:34px;border-radius:50% 50% 50% 8px;background:var(--butter);display:inline-block}
+nav a{margin-left:22px;text-decoration:none;color:var(--ink);font-weight:700;font-size:16px}
+h1,h2,h3{font-family:Fredoka,sans-serif;font-weight:600;line-height:1.15;margin:0}
+h1{font-size:clamp(34px,5.2vw,56px)}h2{font-size:clamp(26px,3.4vw,36px);margin:64px 0 18px}h3{font-size:20px;margin:0 0 6px}
+.hero{position:relative;background:var(--sky);overflow:hidden}
+.hero .wrap{display:grid;grid-template-columns:1.05fr .95fr;gap:32px;align-items:center;padding-top:40px;padding-bottom:70px}
+.hero p{font-size:19px;max-width:30em;margin:14px 0 24px}
+.hero img{width:100%;border-radius:28px;background:#fff;padding:14px;transform:rotate(-2deg)}
+.wave{display:block;width:100%;height:40px;margin-top:-1px}
+.btn{display:inline-block;background:var(--coral);color:#fff;text-decoration:none;padding:14px 24px;border-radius:999px;font-weight:800;font-size:17px;border:0}
+.btn.soft{background:#fff;color:var(--ink);border:2px solid var(--ink)}
+.btn:focus-visible,a:focus-visible{outline:3px solid var(--coral);outline-offset:3px}
+.shelf{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:26px;max-width:860px}
+.book{display:block;text-decoration:none;color:var(--ink)}
+.book img{width:100%;border-radius:14px;box-shadow:0 10px 0 var(--line);transition:transform .15s}
+.book:hover img{transform:translateY(-4px)}
+.book h3{margin-top:16px}.book p{margin:2px 0;color:var(--mut);font-size:15px}
+.book .tag{display:inline-block;background:var(--butter);border-radius:999px;padding:2px 10px;font-size:13px;font-weight:800;margin-top:8px}
+.promise{display:grid;grid-template-columns:1fr 1.2fr;gap:28px;align-items:center;margin:28px 0 44px}
+.promise:nth-child(even){direction:rtl}.promise:nth-child(even)>*{direction:ltr}
+.promise img{border-radius:22px;background:#fff;padding:12px;width:100%;max-height:360px;object-fit:contain}
+.promise p{font-size:18px;max-width:28em;color:#3a3958}
+.spec{width:100%;border-collapse:collapse;margin:16px 0;background:#fff;border-radius:16px;overflow:hidden}
+.spec th,.spec td{text-align:left;padding:12px 14px;border-bottom:1px solid var(--line);vertical-align:top}.spec th{width:32%;color:var(--mut);font-weight:700}
+.three{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}.three img{width:100%;border-radius:16px;background:#fff;padding:8px}.three figcaption{font-size:15px;color:var(--mut);margin-top:6px}figure{margin:0}
+.guides{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px}
+.guide{background:#fff;border-radius:18px;padding:22px;text-decoration:none;color:var(--ink);border:2px solid transparent}
+.guide:hover{border-color:var(--butter)}.guide p{color:var(--mut);font-size:15px;margin:6px 0 0}
+.post{max-width:680px}.post p,.post li{font-size:18px}.post h2{font-size:26px;margin-top:40px}
+.newsletter{background:var(--butter);border-radius:24px;padding:28px;margin-top:70px}
+footer{margin-top:70px;padding:30px 0;color:var(--mut);font-size:15px;border-top:2px dashed var(--line)}
+@media(max-width:720px){.hero .wrap{grid-template-columns:1fr;padding-bottom:40px}.hero img{transform:none}.promise,.promise:nth-child(even){grid-template-columns:1fr;direction:ltr}.three{grid-template-columns:1fr 1fr}nav a{margin-left:12px;font-size:14px;white-space:nowrap}header .wrap{height:60px}.brand{font-size:19px;white-space:nowrap}.brand i{width:26px;height:26px}}
+@media(prefers-reduced-motion:reduce){.book img{transition:none}html{scroll-behavior:auto}}
 """
 
 def page(title, desc, body, path, jsonld=None, canonical=None):
@@ -61,38 +83,39 @@ def page(title, desc, body, path, jsonld=None, canonical=None):
     ld = f'<script type="application/ld+json">{json.dumps(jsonld)}</script>' if jsonld else ""
     html = f"""<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>{title}</title><meta name="description" content="{desc}"><link rel="canonical" href="{can}">
-<meta property="og:title" content="{title}"><meta property="og:description" content="{desc}"><meta property="og:type" content="website"><meta property="og:url" content="{can}">
+<meta property="og:title" content="{title}"><meta property="og:description" content="{desc}"><meta property="og:type" content="website"><meta property="og:image" content="{SITE}/img/hero_party.jpg"><meta property="og:url" content="{can}">
 <style>{CSS}</style>{ld}</head><body>
-<header><div class="wrap"><a class="brand" href="{SITE}/"><span>HA</span>Hop Along Books</a><nav><a href="{SITE}/#books">Books</a><a href="{SITE}/blog/">Guides</a><a href="{SITE}/about.html">About</a></nav></div></header>
+<header><div class="wrap"><a class="brand" href="{SITE}/"><i></i>Hop Along Books</a><nav><a href="{SITE}/#books">Books</a><a href="{SITE}/blog/">Guides</a><a href="{SITE}/about.html">About</a></nav></div></header>
 <main class="wrap">{body}</main>
 <footer><div class="wrap">&copy; 2026 Hop Along Books. Color by number books for ages 3-5. Available on Amazon. &middot; <a href="{SITE}/about.html">About</a> &middot; <a href="{SITE}/blog/">Guides for parents</a></div></footer>
 </body></html>"""
     full = os.path.join(ROOT, path); os.makedirs(os.path.dirname(full), exist_ok=True); open(full, "w").write(html)
 
 def book_card(b):
-    return f"""<div class="card"><a href="{SITE}/books/{b['slug']}.html"><img src="{SITE}/img/{b['key']}_cover.jpg" alt="{b['title']} - cover"></a>
-<h3><a href="{SITE}/books/{b['slug']}.html" style="text-decoration:none">{b['short']}</a></h3><p>{b['sub']}</p><p>{b['status']}</p>
-<a class="btn" href="{b['amazon']}" rel="nofollow">See on Amazon</a></div>"""
+    return f"""<a class="book" href="{SITE}/books/{b['slug']}.html"><img src="{SITE}/img/{b['key']}_cover.jpg" alt="{b['title']} cover">
+<h3>{b['short']}</h3><p>{b['sub']}</p><span class="tag">{b['status']}</span></a>"""
 
 # ---------- home ----------
 home_body = f"""
-<h1>Color by number books a 3-year-old can actually finish</h1>
-<p class="lead">Big shapes. Color names written on every key. One picture per page, with a fun activity page behind it. Every Hop Along book is made for ages 3-5 and checked page by page so small hands can stay inside the lines.</p>
-<h2 id="books">The books</h2>
-<div class="grid">{''.join(book_card(b) for b in BOOKS)}</div>
-<h2>What makes a Hop Along book different</h2>
-<div class="grid">
-<div class="card"><h3>A color key kids can read</h3><p>Every page shows the number, a color swatch <b>and the color name written out</b> - Red, Blue, Green, Brown. No guessing what a dot means, and no odd shades you don't own.</p></div>
-<div class="card"><h3>Really made for ages 3-5</h3><p>5 levels, easy to harder. Level 1 has 3 colors and spaces about an inch wide. Even the busiest Level 5 scenes keep every space about half an inch wide or bigger. We measure every page.</p></div>
-<div class="card"><h3>One picture per page</h3><p>Pictures are printed on one side only, so markers can't ruin the next picture. Behind each one: a read-aloud fact, a color test strip, a "How did you feel?" face and a box to draw your own.</p></div>
-<div class="card"><h3>102 pages, 8.5 x 11 in</h3><p>45 pictures, 45 activity pages and full answer pictures at the back. Big pages for little hands.</p></div>
+<div class="hero" style="margin:0 -20px"><div class="wrap">
+<div><h1>Coloring books a three-year-old can finish by herself</h1>
+<p>Big shapes, color names written on every page, and a picture that still looks like a dinosaur when she's done. Made for ages 3 to 5, with a mom's patience in mind.</p>
+<a class="btn" href="#books">Pick a book</a></div>
+<img src="{SITE}/img/hero_party.jpg" alt="A finished page: three dinosaurs at a birthday party">
+</div><svg class="wave" viewBox="0 0 1200 40" preserveAspectRatio="none" aria-hidden="true"><path d="M0,20 C150,45 300,-5 450,20 C600,45 750,-5 900,20 C1050,45 1150,0 1200,20 L1200,40 L0,40 Z" fill="#FFF8EC"/><rect width="1200" height="20" fill="#7FD3F0" style="mix-blend-mode:normal" y="-20"/></svg></div>
+<h2 id="books">Pick a book</h2>
+<p style="margin:-6px 0 22px;color:var(--mut)">Each one is 45 pictures, easy to harder, with an activity page behind every picture. More on the way.</p>
+<div class="shelf">{''.join(book_card(b) for b in BOOKS)}</div>
+<h2>Why moms keep these in the car</h2>
+<div class="promise"><img src="{SITE}/img/book3_B3_key.jpg" alt="Color key with the color name next to each number"><div><h3>She can read the key herself</h3><p>Every number has a swatch and the color's name - Red, Blue, Green. No squinting at a tiny dot, and no shades you don't own. For Sky Blue, any light blue crayon works.</p></div></div>
+<div class="promise"><img src="{SITE}/img/hero_trex.jpg" alt="Level 1 page: a T-Rex with three big areas to color"><div><h3>Big enough for a fist full of crayon</h3><p>Level 1 spaces are about an inch wide. Even the busiest Level 5 scene keeps every space around half an inch. We measure every page so she stays inside the lines on her own.</p></div></div>
+<div class="promise"><img src="{SITE}/img/book3_B2_back.jpg" alt="The activity page behind each picture"><div><h3>Flip it over, there's more</h3><p>Pictures are printed on one side, so markers can't ruin the next one. Behind each picture: a fact to read aloud, a strip to test colors, a face to circle, and a box to draw her own.</p></div></div>
+<h2>For parents</h2>
+<div class="guides">
+<a class="guide" href="{SITE}/blog/how-to-choose-a-color-by-number-book-for-a-3-year-old.html"><h3>How to choose a color by number book for a 3-year-old</h3><p>Five things to check before you buy, and the mistake most books make.</p></a>
+<a class="guide" href="{SITE}/blog/why-color-names-matter-more-than-color-dots.html"><h3>Why color names beat color dots</h3><p>Dots are hard to match. Words aren't.</p></a>
+<a class="guide" href="{SITE}/blog/markers-vs-crayons-for-toddler-coloring-books.html"><h3>Markers or crayons?</h3><p>What works at 3, at 5, and how to stop bleed-through.</p></a>
 </div>
-<h2>Guides for parents</h2>
-<ul>
-<li><a href="{SITE}/blog/how-to-choose-a-color-by-number-book-for-a-3-year-old.html">How to choose a color by number book for a 3-year-old</a></li>
-<li><a href="{SITE}/blog/why-color-names-matter-more-than-color-dots.html">Why color names matter more than color dots</a></li>
-<li><a href="{SITE}/blog/markers-vs-crayons-for-toddler-coloring-books.html">Markers vs crayons for toddler coloring books</a></li>
-</ul>
 """
 page("Hop Along Books - Color by Number for Kids Ages 3-5", "Color by number books made for ages 3-5: big shapes, color names on every key, one picture per page, a fun activity page behind each. Trucks, animals and dinosaurs. On Amazon.", home_body, "index.html",
      jsonld={"@context":"https://schema.org","@type":"Organization","name":PUB,"url":SITE+"/","description":"Publisher of color by number books for children ages 3-5."}, canonical=SITE+"/")
@@ -105,12 +128,12 @@ for b in BOOKS:
           "image":f"{SITE}/img/{k}_cover.jpg","url":f"{SITE}/books/{b['slug']}.html","offers":{"@type":"Offer","url":b["amazon"],"priceCurrency":"USD","price":"10.99","availability":"https://schema.org/InStock"}}
     if b["isbn"]: ld["isbn"] = b["isbn"]
     body = f"""
-<div class="grid" style="grid-template-columns:1fr 1.4fr;align-items:start">
+<div class="promise" style="margin-top:36px;grid-template-columns:1fr 1.4fr;align-items:start">
 <div><img src="{SITE}/img/{k}_cover.jpg" alt="{b['title']} cover" style="width:100%;border-radius:14px;border:1px solid var(--line)"></div>
-<div><h1 style="margin-top:0">{b['title']}</h1><p class="lead">{b['sub']}</p><p>{b['blurb']}</p>
-<a class="btn" href="{b['amazon']}" rel="nofollow">See on Amazon</a> <span style="color:var(--mut);margin-left:8px">{b['status']} &middot; $10.99</span></div>
+<div><h1 style="margin-top:0">{b['short']}</h1><p style="font-size:20px;color:var(--mut);margin:8px 0 14px">{b['sub']}</p><p style="font-size:18px">{b['blurb']}</p>
+<a class="btn" href="{b['amazon']}" rel="nofollow">Get it on Amazon</a> <span style="color:var(--mut);margin-left:10px">{b['status']} &middot; $10.99</span></div>
 </div>
-<h2>At a glance</h2>
+<h2>What's in it</h2>
 <table class="spec">
 <tr><th>Age</th><td>3-5 (preschool and kindergarten)</td></tr>
 <tr><th>Pictures</th><td>45, in 5 levels from easy to harder</td></tr>
@@ -136,7 +159,7 @@ for b in BOOKS:
 <figure><img src="{SITE}/img/{k}_B3_key.jpg" alt="Color key with color names"><figcaption>A color key kids can read</figcaption></figure>
 </div>
 <h2>More from Hop Along Books</h2>
-<div class="grid">{''.join(book_card(o) for o in BOOKS if o['key']!=k)}</div>
+<div class="shelf">{''.join(book_card(o) for o in BOOKS if o['key']!=k)}</div>
 """
     page(f"{b['title']} | Hop Along Books", f"{b['sub']}. 45 pictures in 5 levels for ages 3-5, color names on every key, one picture per page. 102 pages, 8.5 x 11 in.", body, f"books/{b['slug']}.html", jsonld=ld)
 
@@ -216,7 +239,7 @@ page("About Hop Along Books", "Hop Along Books makes color by number books for a
 </ul>
 <p>The books are published through Amazon KDP and printed on demand. Line art and text are produced with AI tools and checked by hand, page by page.</p>
 <p>Questions? Write to <a href="mailto:hello@hopalongbooks.com">hello@hopalongbooks.com</a>.</p>
-<h2>The books</h2><div class="grid">{''.join(book_card(b) for b in BOOKS)}</div>
+<h2>The books</h2><div class="shelf">{''.join(book_card(b) for b in BOOKS)}</div>
 """, "about.html")
 
 # sitemap + robots
